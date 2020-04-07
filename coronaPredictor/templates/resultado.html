@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel=" stylesheet" href="../static/style.css">
+    <title>Corona Predictor</title>
+</head>
+
+<body>
+<style>
+    input.sub{
+        background-color: rgb(0, 102, 255);
+        color:white;
+        padding: 5px 5px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    label.prob{
+        color: {{color}};
+        font-size: 300%;
+    }
+</style>
+    <!-- Criando o container -->
+    <div class="container ">
+        <!-- Criando a row -->
+        <div class="row">
+            <!-- Criando 3 colunas-->
+            <div class="col-md-12">
+
+                    <h2 class="card-header bg-primary text-white text-center">Resultado</h2>
+                    <div class="card-body">
+                        <div class="card-content">
+                        <div class="form-group">
+                            <label for="Nome">Nome: {{nome}}</label>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="Nome">CPF: {{cpf}}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Nome">Sexo: {{sexo}}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Nome">Idade: {{idade}}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Nome">Possui alguma doença? {{doenca}}. {{qlDoenca}}</label>
+                        </div>
+
+                        <!-- <div id="quais" class="form-group ">
+                            <label for="Nome">Se sim, qual? {{qlDoenca}}</label>
+                        </div> -->
+                        
+                        
+
+                        <div class="form-group">
+                            <label for="Nome">Observação: {{observacao}}</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Nome">Probabilidade de COVID-19:</label>
+                            <br>
+                            <label class="prob">
+                                <strong>{{probabilidade}}</strong>
+                            </label>
+                        </div>
+
+                        </div>
+                        
+                    </div>
+
+                   
+                </div>
+        </div>
+
+       
+
+    </div>
+    </div>
+
+    <!-- Importando arquivos JS-->
+    <script src="../static/jquery-3.4.1.min.js"></script>
+    <script src="../static/bootstrap.min.js"></script>
+    <script src="../static/script.js"></script>
+</body>
+
+</html>

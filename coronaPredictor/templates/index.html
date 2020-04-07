@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel=" stylesheet" href="../static/style.css">
+    <title>Corona Predictor</title>
+</head>
+
+<body>
+<style>
+    input.sub{
+        background-color: rgb(0, 102, 255);
+        color:white;
+        padding: 5px 5px;
+        margin: 5px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+</style>
+    <!-- Criando o container -->
+    <div class="container ">
+        <!-- Criando a row -->
+        <div class="row">
+            <!-- Criando 3 colunas-->
+            <div class="col-md-12">
+
+
+                <form class="card" method="POST" action="submit">{% csrf_token %}
+                    <h2 class="card-header bg-primary text-white text-center">Formulário</h2>
+                    <div class="card-body">
+                        <div class="card-content">
+                        <div class="form-group">
+                            {%for message in messages%}
+                            <div class="alert alert-danger">
+                                <strong>Erro!</strong> {{message}}
+                            </div>
+                            {%endfor%}
+                            <label for="Nome">Nome</label>
+                            <input class="form-control" type="text" placeholder="Insira o nome" name="nome">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="Nome">CPF</label>
+                            <input class="form-control" type="text" placeholder="Insira o nome" name="cpf">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Nome">Sexo</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="sexo">
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                          
+                              </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Nome">Idade</label>
+                            <input class="form-control" type="text" placeholder="Insira o nome" name="idade">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Nome">Possui alguma doença?</label>
+                            <select class="form-control" id="doenca" name="doenca">
+                                <option>Sim</option>
+                                <option selected>Não</option>
+                             
+                              </select>
+                        </div>
+
+                        <div id="quais" class="form-group ">
+                            <label for="Nome">Se sim, qual</label>
+                            <input class="form-control" type="text" placeholder="Insira o nome" name="qlDoenca">
+                        </div>
+                        
+                        
+
+                        <div class="form-group">
+                            <label for="Nome">Observaçao</label>
+                            <input class="form-control" type="text" placeholder="Insira o nome" name="observacao">
+                        </div>
+                        </div>
+                        
+                    </div>
+                    <div class="card-footer text-center">
+                        <input type="submit" value="Enviar" class="sub">
+                    </div>
+
+                   
+            </div>
+            </form>
+        </div>
+
+       
+
+    </div>
+    </div>
+
+    <!-- Importando arquivos JS-->
+    <script src="../static/jquery-3.4.1.min.js"></script>
+    <script src="../static/bootstrap.min.js"></script>
+    <script src="../static/script.js"></script>
+</body>
+
+</html>
