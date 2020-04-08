@@ -31,6 +31,11 @@
                 <div class="card-content text-center">
 
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                    {%for message in messages%}
+                            <div class="alert alert-danger">
+                                <strong>Erro!</strong> {{message}}
+                            </div>
+                            {%endfor%}
                     <form enctype="multipart/form-data" method="POST" action="submit"> {% csrf_token %}
                         <input type='file' id="imgInp"  name="myfile"/>
                         <img class="invisivel" id="blah" src="#" alt="your image" />
