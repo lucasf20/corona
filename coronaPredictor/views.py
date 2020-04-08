@@ -40,6 +40,7 @@ def home_submit(Request):
 def fotoUp(request):
     try:
         cpf = request.COOKIES['cpf']
+        paciente.objects.get(cpf = cpf)
         return render(request, "foto.html")
     except:
         messages.error(request,"Cadastre o paciente primeiro!")
