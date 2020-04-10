@@ -1,9 +1,11 @@
+from . predictor import predict_covid
 from django.shortcuts import render, redirect
 from datetime import datetime
 from .models import *
 from django.contrib import messages
 from django.core.files.storage import FileSystemStorage
 from random import randrange
+import numpy as np
 
 # Create your views here.
 
@@ -66,12 +68,15 @@ def fotoUp_submit(request):
         return redirect("/fotoUp/")
 
 def resultado(request):
-    try:
+    #try:
         photoUrl = request.COOKIES['foto_url']
+        #
+        result = predict_covid(photoUrl)
+        #
         cpf = request.COOKIES['cpf']
         pac = paciente.objects.get(cpf = cpf)
         color_prob = ["rgb(0, 255, 0)","rgb(25, 225, 0)","rgb(50, 200, 0)","rgb(75, 175, 0)","rgb(100, 150, 0)","rgb(125, 125, 0)","rgb(150, 100, 0)","rgb(175, 75, 0)","rgb(200, 25, 0)","rgb(255, 0, 0)"]
-        prob =  randrange(101) #teste
+        prob =  result #teste
         num =  int(prob/10)
         if num == 10:
             num = 9
@@ -90,6 +95,6 @@ def resultado(request):
         response.set_cookie('cpf', "")
         response.set_cookie('foto_url', "")
         return response
-    except:
-        messages.error(request,"Cadastre o paciente primeiro!")
-        return redirect("/")
+   # except:
+      #  messages.error(request,"Cadastre o paciente primeiro!")
+     #   return redirect("/")
