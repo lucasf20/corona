@@ -26,10 +26,10 @@ def home_submit(Request):
         doenca = Request.POST.get("doenca")
         if doenca == "Sim":
             pac.doenca = True
-            pac.qlDoenca = Request.POST.get("qlDoenca")
+            pac.nome_doenca = Request.POST.get("qlDoenca")
         else:
             pac.doenca = False
-            pac.qlDoenca = None
+            pac.nome_doenca = ""
         pac.observacao = Request.POST.get("observacao")
         pac.save()
         response = redirect('/fotoUp/')
@@ -68,10 +68,11 @@ def fotoUp_submit(request):
         return redirect("/fotoUp/")
 
 def resultado(request):
-    #try:
+    try:
         photoUrl = request.COOKIES['foto_url']
         #
         result = predict_covid(photoUrl)
+        #result = randrange(101) #teste
         #
         cpf = request.COOKIES['cpf']
         pac = paciente.objects.get(cpf = cpf)
@@ -95,6 +96,6 @@ def resultado(request):
         response.set_cookie('cpf', "")
         response.set_cookie('foto_url', "")
         return response
-   # except:
-      #  messages.error(request,"Cadastre o paciente primeiro!")
-     #   return redirect("/")
+    except:
+        messages.error(request,"Cadastre o paciente primeiro!")
+        return redirect("/")
